@@ -1,27 +1,30 @@
-package org.example;
-
 public class Fenster {
-  private boolean offen;
-  private Raum raum;
+    private boolean offen;
 
-  public Fenster(Raum raum) {
-    this.raum = raum;
-    this.offen = false; // Standardmäßig geschlossen
-  }
+    private Raum raum;
 
-  public void oeffneFenster() {
-    this.offen = true;
-  }
+    public Fenster(Raum raum) {
+        this.raum = raum;
+    }
 
-  public void schliesseFenster() {
-    this.offen = false;
-  }
+    public void oeffneFenster() {
 
-  public boolean isOffen() {
-    return offen;
-  }
+        for (Heizung heizung: raum.getHeizungliste()) {
+            heizung.schalteAus();
+        }
 
-  public Raum getRaum() {
-    return raum;
-  }
+        offen = true;
+    }
+
+    public void schliesseFenster() {
+        offen = false;
+    }
+
+    public boolean isOffen() {
+        return offen;
+    }
+
+    public Raum getRaum() {
+        return raum;
+    }
 }
